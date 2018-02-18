@@ -30,15 +30,28 @@ class BaseHandler(webapp2.RequestHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
+        return self.render_template("homepage.html")
 
-        # tu vpises kodo
+class MainHandler1(BaseHandler):
+    def get(self):
+        return self.render_template("o-meni.html")
 
-        izzrebane_stevilke = 2+3*5
+class MainHandler2(BaseHandler):
+    def get(self):
+        return self.render_template("moji-projekti.html")
 
-        info = {"sporocilo": izzrebane_stevilke, "pošiljatelj": "Matija", "stvar": "tretja stvar"}
-        return self.render_template("hello.html", info) #Pokazi ta template
+class MainHandler3(BaseHandler):
+    def get(self):
+        return self.render_template("blog.html")
+
+class MainHandler4(BaseHandler):
+    def get(self):
+        return self.render_template("kontakt.html")
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
-    webapp2.Route('/pozdrav', MainHandler)
+    webapp2.Route('/o-meni', MainHandler1),
+    webapp2.Route('/moji-projekti', MainHandler2),
+    webapp2.Route('/blog', MainHandler3),
+    webapp2.Route('/kontakt', MainHandler4)
 ], debug=True)
